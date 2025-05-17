@@ -1,10 +1,17 @@
 import express from 'express'
 import mongoose from 'mongoose'
+import dotenv from 'dotenv'
+
+dotenv.config({
+    path: '../.env'
+})
 
 const app = express();
 
+const mongoURI = process.env.Express_Mongodb_Form_Handling_Mongodb_host
+
 mongoose.connect(
-    "mongodb+srv://peehusingh2003:p93XZsykVLVU7LU0@cluster0.slo61qc.mongodb.net/",{
+    mongoURI,{
         dbName:"Express_Form_Handling"
     }
 ).then(()=>console.log("Mongodb Connected...!")).catch((err)=>console.log(err))

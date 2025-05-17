@@ -1,5 +1,10 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import path from 'path'
+
+dotenv.config({path: '../.env'})
+
 
 import { UserRegister } from './controllers/UserRegister.js';
 
@@ -8,8 +13,11 @@ const app = express()
 
 
 app.use(express.urlencoded({extended:true}))
+
+const mongoURI = process.env.MVC_Project_Mongodb_host;
+
 mongoose.connect(
-    "mongodb+srv://peehusingh2003:itatfSK9wgaaXNw7@cluster0.1ydy4so.mongodb.net/",
+    mongoURI,
     {
         dbName: "MVC_Project",
     }
